@@ -1,6 +1,6 @@
 # 4800-Capstone-Project
 
-Please name branches and tag commits based on the issue you are working on. For example if you are working on Jira issue DEV4800-2 name your branch feature/DEV4800-inserttask and start every commit feature for that branch with DEV4800-2
+Please name branches and tag commits based on the issue you are working on. For example if you are working on Jira issue DEV4800-2 name your branch feature/DEV4800-taskName and start every commit feature for that branch with DEV4800-2
 
 Example:
 
