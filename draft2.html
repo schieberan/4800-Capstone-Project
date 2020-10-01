@@ -8,14 +8,82 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
+  <style>
+  /* Style the Image Used to Trigger the Modal */
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+  </style>
 </head>
-<body>
+<body onload="myFunction()">
 
 <div class="jumbotron text-center" style="margin-bottom:0">
   <h1>What are the horses doing?</h1> 
 </div>
-
+  
 <nav class="navbar navbar-expand-sm bg-info navbar-dark">
   <a class="navbar-brand" href="#"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -35,84 +103,122 @@
 
 <div class="container mt-3">
   <h2>Horses</h2>
-  <p>Search:</p>  
-  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <p>Search</p>  
+  <input class="form-control" id="myInput" type="text" placeholder="Search...">
   <br>
+    
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Camera</th>
-        <th>Horse Present</th>
-        <th>Number</th>
-		<th>Stat</th>
+	    <th>Photo</th>
+        <th>Location</th>
+        <th>Flag</th>
+        <th>Time</th>
+		<th>Notified</th>
+		<th>Seen</th>
+		<th>Note</th>
       </tr>
     </thead>
     <tbody id="myTable">
       <tr>
+	    <td>
+		<img id="myImg" src="images/table.jpeg" alt="horse" style="width:100%;max-width:200px">
+		  <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+          </div>
+		</td>
         <td>90</td>
-        <td>Yes</td>
-        <td>2</td>
-        <td>Standing</td>
+		<td>Standing</td>
+		<td>9:23am</td>
+		<td>Mark</td>
+		<td>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1"></label>
+            </div>
+        </td>
+		<td><input type="text" class="form-control" value=""/></td>
       </tr>
       <tr>
-        <td>91</td>
-        <td>No</td>
-        <td>0</td>
-	<td>Outside</td>
-      </tr>
-	  <tr>
-        <td>90</td>
-        <td>Yes</td>
-        <td>2</td>
-	<td>Standing</td>
-      </tr>
-	  <tr>
-        <td>90</td>
-        <td>No</td>
-        <td>0</td>
-	<td>Outside</td>
-      </tr>
-	  <tr>
-        <td>90</td>
-        <td>Yes</td>
-        <td>2</td>
-	<td>Standing</td>
-      </tr>
-	  <tr>
-        <td>90</td>
-        <td>Yes</td>
-        <td>1</td>
-	<td>Laying</td>
-      </tr>
-      <tr>
-        <td>94</td>
-        <td>Yes</td>
-        <td>1</td>
-	<td>Standing</td>
-      </tr>
-      <tr>
+	    <td>
+		  <img id="myImg" src="images/cam90.2020-09-07-2-20-01.jpeg" alt="horse" style="width:100%;max-width:200px">
+		  <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+          </div>
+		</td>
         <td>100</td>
-        <td>Yes</td>
-        <td>1</td>
-	<td>Laying</td>
+		<td>Standing</td>
+		<td>8:01pm</td>
+		<td>Brian</td>
+		<td>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                <label class="custom-control-label" for="customCheck2"></label>
+            </div>
+        </td>
+		<td><input type="text" class="form-control" value=""/></td>
       </tr>
-	  <tr>
+		<tr>
+	    <td>
+		  <img id="myImg" src="images/cam112.2020-09-09-09-20-06.jpeg" alt="horse" style="width:100%;max-width:200px">
+		  <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+          </div>
+		</td>
         <td>112</td>
-        <td>Yes</td>
-        <td>1</td>
-	<td>Standing</td>
+		<td>Standing</td>
+		<td>4:20pm</td>
+		<td>Chad</td>
+		<td>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                <label class="custom-control-label" for="customCheck2"></label>
+            </div>
+        </td>
+		<td><input type="text" class="form-control" value=""/></td>
       </tr>
 	  <tr>
-        <td>100</td>
-        <td>Yes</td>
-        <td>1</td>
-	<td>Standing</td>
+	    <td>
+		  <img id="myImg" src="images/cam112.2020-09-12-08-00-05.jpg" alt="horse" style="width:100%;max-width:200px">
+		  <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+          </div>
+		</td>
+        <td>112</td>
+		<td>Laying</td>
+		<td>8:0pm</td>
+		<td>Sandy</td>
+		<td>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                <label class="custom-control-label" for="customCheck2"></label>
+            </div>
+        </td>
+		<td><input type="text" class="form-control" value=""/></td>
       </tr>
 	  <tr>
-        <td>100</td>
-        <td>Yes</td>
-        <td>2</td>
-	<td>Standing</td>
+	    <td>
+		  <img id="myImg" src="images/cam112.2020-09-13-03-40-08.jpg" alt="horse" style="width:100%;max-width:200px">
+		  <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+          </div>
+		</td>
+        <td>112</td>
+		<td>Laying</td>
+		<td>3:40am</td>
+		<td>Michael</td>
+		<td>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                <label class="custom-control-label" for="customCheck2"></label>
+            </div>
+        </td>
+		<td><input type="text" class="form-control" value=""/></td>
       </tr>
     </tbody>
   </table>
@@ -132,6 +238,29 @@ $(document).ready(function(){
     });
   });
 });
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+function myFunction() {
+  alert("Horse Alert!\nThere is a horse laying down");
+}
 </script>
 
 </body>
