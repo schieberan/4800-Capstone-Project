@@ -1,0 +1,79 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-foalszn-dev-165847-authRole",
+      "UnauthRoleArn": "arn:aws:iam::363760508324:role/amplify-foalszn-dev-165847-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::363760508324:role/amplify-foalszn-dev-165847-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-foalszn-dev-165847-deployment",
+      "UnauthRoleName": "amplify-foalszn-dev-165847-unauthRole",
+      "StackName": "amplify-foalszn-dev-165847",
+      "StackId": "arn:aws:cloudformation:us-east-1:363760508324:stack/amplify-foalszn-dev-165847/c7fea830-0816-11eb-ae7b-0aece6d977c1",
+      "AmplifyAppId": "dq4fgdvsiu0z8"
+    }
+  },
+  "auth": {
+    "foalszn346ce5b9": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-foalszn-dev-165847-deployment/amplify-cfn-templates/auth/foalszn346ce5b9-cloudformation-template.yml",
+        "logicalId": "authfoalszn346ce5b9"
+      },
+      "lastPushTimeStamp": "2020-10-07T06:05:54.941Z",
+      "output": {
+        "AppClientSecret": "fd21g02rl280e67faepcvbevaov7alnm3uqf938ni9gvmbhvg9h",
+        "UserPoolId": "us-east-1_mkntIHP1q",
+        "AppClientIDWeb": "aqcnc9t5gs0af3kt91i0k9u6a",
+        "AppClientID": "2sagdej7t9l9u2v9qhjdmdg2m6",
+        "IdentityPoolId": "us-east-1:787e7655-9efd-48dc-b6d3-198160c01822",
+        "IdentityPoolName": "foalszn346ce5b9_identitypool_346ce5b9__dev",
+        "UserPoolName": "foalszn346ce5b9_userpool_346ce5b9"
+      },
+      "lastPushDirHash": "QQQ8HDFh3lFn0Bo3J3ia7DUs8rE="
+    }
+  },
+  "api": {
+    "NeighAPI": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "description": "neigh"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "vfctqj6dojg2rn4h4l72ghoyz4",
+        "GraphQLAPIEndpointOutput": "https://7gcug2ezk5eajd6ldpah6nataq.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-mnawcvxbffajjdxodjq4fonfhe"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-foalszn-dev-165847-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiNeighAPI"
+      },
+      "lastPushTimeStamp": "2020-10-07T06:05:54.951Z",
+      "lastPushDirHash": "kuHwAcf/Bx+3+kKeP50GKOZhAto="
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "providerPlugin": "awscloudformation",
+      "type": "manual",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-foalszn-dev-165847-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
+        "logicalId": "hostingamplifyhosting"
+      },
+      "lastPushTimeStamp": "2020-10-07T06:05:54.966Z",
+      "output": {},
+      "lastPushDirHash": "/+VZ33seFFqAr6wbtptwbINUfSA="
+    }
+  }
+}
