@@ -1,0 +1,161 @@
+type Neigh {
+  id: ID!
+  camera: String!
+  present: String!
+  number: String!
+  status: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelNeighConnection {
+  items: [Neigh]
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelNeighFilterInput {
+  camera: ModelStringInput
+  present: ModelStringInput
+  number: ModelStringInput
+  status: ModelStringInput
+  and: [ModelNeighFilterInput]
+  or: [ModelNeighFilterInput]
+  not: ModelNeighFilterInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+type Query {
+  getNeigh(id: ID!): Neigh
+  listNeighs(filter: ModelNeighFilterInput, limit: Int, nextToken: String): ModelNeighConnection
+}
+
+input CreateNeighInput {
+  id: ID
+  camera: String!
+  present: String!
+  number: String!
+  status: String!
+}
+
+input UpdateNeighInput {
+  camera: String
+  present: String
+  number: String
+  status: String
+}
+
+input DeleteNeighInput {
+  id: ID
+}
+
+type Mutation {
+  createNeigh(input: CreateNeighInput!, condition: ModelNeighConditionInput): Neigh
+  updateNeigh(input: UpdateNeighInput!, condition: ModelNeighConditionInput): Neigh
+  deleteNeigh(input: DeleteNeighInput!, condition: ModelNeighConditionInput): Neigh
+}
+
+input ModelNeighConditionInput {
+  camera: ModelStringInput
+  present: ModelStringInput
+  number: ModelStringInput
+  status: ModelStringInput
+  and: [ModelNeighConditionInput]
+  or: [ModelNeighConditionInput]
+  not: ModelNeighConditionInput
+}
+
+type Subscription {
+  onCreateNeigh: Neigh @aws_subscribe(mutations: ["createNeigh"])
+  onUpdateNeigh: Neigh @aws_subscribe(mutations: ["updateNeigh"])
+  onDeleteNeigh: Neigh @aws_subscribe(mutations: ["deleteNeigh"])
+}

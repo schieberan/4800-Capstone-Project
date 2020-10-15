@@ -1,0 +1,6 @@
+type Neigh @model {
+  camera: String!
+  present: String!
+  number: String!
+  status: String!
+}
