@@ -43,15 +43,15 @@ class Tables extends React.Component {
                   <Table className="tablesorter" responsive>
                     <thead className="text-primary">
                       <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th className="text-center">Salary</th>
+                        <th>Mare</th>
+                        <th>Stall</th>
+                        <th>Due Date</th>
+                        <th className="text-center">Status</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>Rice</td>
                         <td>Niger</td>
                         <td>Oud-Turnhout</td>
                         <td className="text-center">$36,738</td>

@@ -17,6 +17,7 @@
 */
 import Dashboard from "views/Dashboard.js";
 import Icons from "views/Icons.js";
+import Mares from "views/Mares.js"
 import Map from "views/Map.js";
 import Notifications from "views/Notifications.js";
 import Rtl from "views/Rtl.js";
@@ -29,24 +30,24 @@ var routes = [
     path: "/dashboard",
     name: "Dashboard",
     rtlName: "لوحة القيادة",
-    icon: "tim-icons icon-chart-pie-36",
+    icon: "tim-icons icon-sound-wave",
     component: Dashboard,
     layout: "/admin"
   },
   {
     path: "/icons",
-    name: "Icons",
+    name: "Health Info",
     rtlName: "الرموز",
     icon: "tim-icons icon-atom",
     component: Icons,
     layout: "/admin"
   },
   {
-    path: "/map",
-    name: "Map",
-    rtlName: "خرائط",
-    icon: "tim-icons icon-pin",
-    component: Map,
+    path: "/mares",
+    name: "Mares",
+    rtlName: "الرموز",
+    icon: "tim-icons icon-heart-2",
+    component: Mares,
     layout: "/admin"
   },
   {
@@ -66,28 +67,12 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/tables",
-    name: "Table List",
-    rtlName: "قائمة الجدول",
-    icon: "tim-icons icon-puzzle-10",
-    component: TableList,
-    layout: "/admin"
-  },
-  {
     path: "/typography",
-    name: "Typography",
+    name: "Logs",
     rtlName: "طباعة",
     icon: "tim-icons icon-align-center",
     component: Typography,
     layout: "/admin"
-  },
-  {
-    path: "/rtl-support",
-    name: "RTL Support",
-    rtlName: "ار تي ال",
-    icon: "tim-icons icon-world",
-    component: Rtl,
-    layout: "/rtl"
   }
 ];
 export default routes;

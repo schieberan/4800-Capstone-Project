@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/black-dashboard-react/static/css/main.401ec201.chunk.css",
-    "main.js": "/black-dashboard-react/static/js/main.b511a0a1.chunk.js",
-    "main.js.map": "/black-dashboard-react/static/js/main.b511a0a1.chunk.js.map",
+    "main.js": "/black-dashboard-react/static/js/main.82e4e40b.chunk.js",
+    "main.js.map": "/black-dashboard-react/static/js/main.82e4e40b.chunk.js.map",
     "runtime-main.js": "/black-dashboard-react/static/js/runtime-main.d55d70f9.js",
     "runtime-main.js.map": "/black-dashboard-react/static/js/runtime-main.d55d70f9.js.map",
-    "static/js/2.c991ff17.chunk.js": "/black-dashboard-react/static/js/2.c991ff17.chunk.js",
-    "static/js/2.c991ff17.chunk.js.map": "/black-dashboard-react/static/js/2.c991ff17.chunk.js.map",
+    "static/js/2.07005bfe.chunk.js": "/black-dashboard-react/static/js/2.07005bfe.chunk.js",
+    "static/js/2.07005bfe.chunk.js.map": "/black-dashboard-react/static/js/2.07005bfe.chunk.js.map",
     "index.html": "/black-dashboard-react/index.html",
-    "precache-manifest.4b1b7ecd3f16bd888d9701d2c0346268.js": "/black-dashboard-react/precache-manifest.4b1b7ecd3f16bd888d9701d2c0346268.js",
+    "precache-manifest.b1e6b59ee23b6e9e8a247e3c2974456e.js": "/black-dashboard-react/precache-manifest.b1e6b59ee23b6e9e8a247e3c2974456e.js",
     "service-worker.js": "/black-dashboard-react/service-worker.js",
     "static/css/main.401ec201.chunk.css.map": "/black-dashboard-react/static/css/main.401ec201.chunk.css.map",
-    "static/js/2.c991ff17.chunk.js.LICENSE.txt": "/black-dashboard-react/static/js/2.c991ff17.chunk.js.LICENSE.txt",
-    "static/js/main.b511a0a1.chunk.js.LICENSE.txt": "/black-dashboard-react/static/js/main.b511a0a1.chunk.js.LICENSE.txt",
+    "static/js/2.07005bfe.chunk.js.LICENSE.txt": "/black-dashboard-react/static/js/2.07005bfe.chunk.js.LICENSE.txt",
+    "static/js/main.82e4e40b.chunk.js.LICENSE.txt": "/black-dashboard-react/static/js/main.82e4e40b.chunk.js.LICENSE.txt",
     "static/media/anime3.png": "/black-dashboard-react/static/media/anime3.bd6820f1.png",
     "static/media/emilyz.jpg": "/black-dashboard-react/static/media/emilyz.9fcf69e5.jpg",
     "static/media/nucleo-icons.css": "/black-dashboard-react/static/media/nucleo.f0b489a5.woff",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.d55d70f9.js",
-    "static/js/2.c991ff17.chunk.js",
+    "static/js/2.07005bfe.chunk.js",
     "static/css/main.401ec201.chunk.css",
-    "static/js/main.b511a0a1.chunk.js"
+    "static/js/main.82e4e40b.chunk.js"
   ]
 }
