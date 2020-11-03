@@ -7,6 +7,7 @@ import {
 const style = { width: "18rem" };
 
 class Mares extends React.Component {
+
   render() {
     return (
       <>
@@ -16,8 +17,10 @@ class Mares extends React.Component {
                     <CardImg top width="100%" src="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/17505132_10101716442692277_1192316473197671617_o.jpg?_nc_cat=103&_nc_sid=730e14&_nc_ohc=5my4YWBGLDwAX-PvRvw&_nc_ht=scontent-iad3-1.xx&oh=b2f35586a28ae73952c35b739188a00b&oe=5FB06C52"/>
                     <CardBody>
                         <CardTitle>Raven</CardTitle>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <Button>Go somewhere</Button>
+                        <CardText>
+
+                        </CardText>
+                        <Button>Update Info</Button>
                     </CardBody>
                 </Card>
                 <Card style={style}>
@@ -25,7 +28,7 @@ class Mares extends React.Component {
                     <CardBody>
                         <CardTitle>Rachel</CardTitle>
                         <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <Button>Go somewhere</Button>
+                        <Button>Update Info</Button>
                     </CardBody>
                 </Card>
             </CardDeck>

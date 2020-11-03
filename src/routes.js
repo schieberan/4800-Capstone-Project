@@ -36,7 +36,7 @@ var routes = [
   },
   {
     path: "/icons",
-    name: "Health Info",
+    name: "Foal Watchers",
     rtlName: "الرموز",
     icon: "tim-icons icon-atom",
     component: Icons,
