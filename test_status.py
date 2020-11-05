@@ -10,7 +10,7 @@ def test_image(d, f):
     img_height = 360
     img_width = 640
 
-    file = d + f
+    file = d + "\\" + f
     img = keras.preprocessing.image.load_img(
         file, target_size=(img_height, img_width)
     )
@@ -20,7 +20,8 @@ def test_image(d, f):
     predictions = new_model.predict(img_array)
     score = tf.nn.softmax(predictions[0])
 
-    return class_names[np.argmax(score)], 100 * np.max(score)
+    print(class_names[np.argmax(score)])
+    print(100 * np.max(score))
 
 
 num_args = len(sys.argv)
