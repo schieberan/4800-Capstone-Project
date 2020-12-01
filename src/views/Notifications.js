@@ -18,6 +18,7 @@
 import React from "react";
 // react plugin for creating notifications over the dashboard
 import NotificationAlert from "react-notification-alert";
+import axios from 'axios'
 
 // reactstrap components
 import {
@@ -27,7 +28,12 @@ import {
   Card,
   CardHeader,
   CardBody,
+  CardDeck,
   CardTitle,
+  Form,
+  FormGroup,
+  FormLabel,
+  FormControl,
   Row,
   Col
 } from "reactstrap";
@@ -59,12 +65,7 @@ class Notifications extends React.Component {
     options = {
       place: place,
       message: (
-        <div>
-          <div>
-            Welcome to <b>Black Dashboard React</b> - a beautiful freebie for
-            every web developer.
-          </div>
-        </div>
+        "Email Sent"
       ),
       type: type,
       icon: "tim-icons icon-bell-55",
@@ -72,174 +73,136 @@ class Notifications extends React.Component {
     };
     this.refs.notificationAlert.notificationAlert(options);
   };
+  
+  state={
+	  subject:'',
+	  email:'',
+	  message:'',
+	  sent:false
+  }
+  
+  //handle inputs
+  handleSubject=(e)=>{
+	  this.setState({
+		  subject:e.target.value
+	  })
+	  
+  }
+	
+  handleEmail=(e)=>{
+	  this.setState({
+		  email:e.target.value
+	  })
+	  
+  }
+
+  handleMessage=(e)=>{
+	  this.setState({
+		  message:e.target.value
+	  })
+	  
+  }  
+  
+  //submit 
+  formSubmit=(e)=>{
+	e.preventDefault();
+	
+	let data = {
+		subject:this.state.subject,
+		email:this.state.email,
+		message:this.state.message
+	}
+	
+	axios.post('/api/forma',data)
+	.then(res=>{
+		this.setState({
+			sent:true,
+		},this.resetForm())
+	}).catch(()=>{
+		console.log('message not sent');
+	})
+		
+  }
+  
+  
+  //reset form
+  resetForm=()=>{
+    this.setState({
+		subject:'',
+		email:'',
+		message:''
+	})
+	
+	setTimeout(()=>{
+		this.setState({
+			sent:false,
+    })
+  },3000)
+  }
+  
   render() {
     return (
       <>
-        <div className="content">
-          <div className="react-notification-alert-container">
+	    <div className="content">
+		<div className="react-notification-alert-container">
             <NotificationAlert ref="notificationAlert" />
           </div>
           <Row>
             <Col md="6">
               <Card>
                 <CardHeader>
-                  <CardTitle tag="h4">Notifications Style</CardTitle>
+                  <CardTitle tag="h4">Send Notification</CardTitle>
                 </CardHeader>
-                <CardBody>
-                  <Alert color="info">
-                    <span>This is a plain notification</span>
-                  </Alert>
-                  <UncontrolledAlert color="info">
-                    <span>This is a notification with close button.</span>
-                  </UncontrolledAlert>
-                  <UncontrolledAlert className="alert-with-icon" color="info">
-                    <span
-                      className="tim-icons icon-bell-55"
-                      data-notify="icon"
-                    />
-                    <span data-notify="message">
-                      This is a notification with close button and icon.
-                    </span>
-                  </UncontrolledAlert>
-                  <UncontrolledAlert className="alert-with-icon" color="info">
-                    <span
-                      className="tim-icons icon-bell-55"
-                      data-notify="icon"
-                    />
-                    <span data-notify="message">
-                      This is a notification with close button and icon and have
-                      many lines. You can see that the icon and the close button
-                      are always vertically aligned. This is a beautiful
-                      notification. So you don't have to worry about the style.
-                    </span>
-                  </UncontrolledAlert>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col md="6">
-              <Card>
-                <CardHeader>
-                  <CardTitle tag="h4">Notification states</CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <UncontrolledAlert color="primary">
-                    <span>
-                      <b>Primary - </b>
-                      This is a regular notification made with ".alert-primary"
-                    </span>
-                  </UncontrolledAlert>
-                  <UncontrolledAlert color="info">
-                    <span>
-                      <b>Info - </b>
-                      This is a regular notification made with ".alert-info"
-                    </span>
-                  </UncontrolledAlert>
-                  <UncontrolledAlert color="success">
-                    <span>
-                      <b>Success - </b>
-                      This is a regular notification made with ".alert-success"
-                    </span>
-                  </UncontrolledAlert>
-                  <UncontrolledAlert color="warning">
-                    <span>
-                      <b>Warning - </b>
-                      This is a regular notification made with ".alert-warning"
-                    </span>
-                  </UncontrolledAlert>
-                  <UncontrolledAlert color="danger">
-                    <span>
-                      <b>Danger - </b>
-                      This is a regular notification made with ".alert-danger"
-                    </span>
-                  </UncontrolledAlert>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col md="12">
-              <Card>
-                <CardBody>
-                  <div className="places-buttons">
-                    <Row>
-                      <Col className="ml-auto mr-auto text-center" md="6">
-                        <CardTitle tag="h4">
-                          Notifications Places<p className="category">
-                            Click to view notifications
-                          </p>
-                        </CardTitle>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className="ml-auto mr-auto" lg="8">
-                        <Row>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("tl")}
-                            >
-                              Top Left
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("tc")}
-                            >
-                              Top Center
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("tr")}
-                            >
-                              Top Right
-                            </Button>
-                          </Col>
-                        </Row>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className="ml-auto mr-auto" lg="8">
-                        <Row>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("bl")}
-                            >
-                              Bottom Left
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("bc")}
-                            >
-                              Bottom Center
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("br")}
-                            >
-                              Bottom Right
-                            </Button>
-                          </Col>
-                        </Row>
-                      </Col>
-                    </Row>
-                  </div>
-                </CardBody>
+				<CardBody>
+				  <form onSubmit = {this.formSubmit}>
+				    <div class="form-group">
+					  <h6>Subject Line</h6>
+                      <input class="col-lg" 
+					    type="text" 
+						name="subject" 
+						placeholder="Hidden Hill Notification" 
+						value={this.state.subject}
+						onChange={this.handleSubject}
+					  />
+					</div>
+					<div class="form-group">
+                      <h6>Email Recipient</h6>
+                      <select class="col-lg" 
+					    type="text" 
+						name="email" 
+						value={this.state.email}
+						placeholder="choose"
+						onChange={this.handleEmail}
+						required
+					  >
+					    <option>All</option>
+					    <option>Allison Schieber</option>
+      			        <option>Juliana Luczynski</option>
+      			      </select>
+                    </div>
+					<div class="form-group">
+    				  <h6>Notification</h6>
+    				  <input class="col-lg" 
+					    type="text" 
+						name="message" 
+						placeholder="Alert - horse pacing"
+						value={this.state.message}
+						onChange={this.handleMessage}
+					  />
+  				    </div>
+				    <Button
+                      block
+                      color="primary"
+                      onClick={() => this.notify("tc")}
+                    >
+                    Send Email
+                    </Button>
+                  </form>
+				  </CardBody>
               </Card>
             </Col>
           </Row>
-        </div>
+	    </div>
       </>
     );
   }
