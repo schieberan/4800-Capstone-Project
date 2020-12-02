@@ -13,9 +13,7 @@ app.set('view engine', 'handlebars');
 app.locals.layout = false; 
 
 // Static folder
-//app.use('/public/src/', express.static(path.join(__dirname, 'public')));
- app.use(express.static(__dirname + '/src'));
-
+app.use(express.static(__dirname + '/src'));
 
 // Body Parser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -28,8 +26,7 @@ app.get('*', (req, res) => {
 
 app.post('/:lang*?/admin/notifications', function(req, res) {
   console.log('server contact');   
-  console.log(req.body);  
-  
+   
   const output = `
     <h1>Foal Watch Notification</h1>
 	<p>You have a new notification from Hidden Hill Farms</p>
@@ -37,7 +34,7 @@ app.post('/:lang*?/admin/notifications', function(req, res) {
     <p>${req.body.message}</p>
   `;
   
-  // create reusable transporter object using the default SMTP transport
+  // create reusable transporter object 
   let transporter = nodemailer.createTransport({
     service:'Gmail',
     port: 587,
@@ -51,7 +48,7 @@ app.post('/:lang*?/admin/notifications', function(req, res) {
     }
   });
   
-  // setup email data with unicode symbols
+  // setup email data 
   let mailOptions = {
       from: '"Hidden Hill Farm" <hiddenhillnotification@gmail.com>', 
       to: 'jluczynski97@gmail.com, ally.schieber@gmail.com',
@@ -66,8 +63,7 @@ app.post('/:lang*?/admin/notifications', function(req, res) {
           return console.log(error);
       }
       console.log('Message sent: %s', info.messageId);   
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
+      console.log(req.body);
   });
   
   
