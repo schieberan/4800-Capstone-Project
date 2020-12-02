@@ -18,22 +18,15 @@
 import React from "react";
 // react plugin for creating notifications over the dashboard
 import NotificationAlert from "react-notification-alert";
-import axios from 'axios'
+
 
 // reactstrap components
 import {
-  Alert,
-  UncontrolledAlert,
   Button,
   Card,
   CardHeader,
   CardBody,
-  CardDeck,
   CardTitle,
-  Form,
-  FormGroup,
-  FormLabel,
-  FormControl,
   Row,
   Col
 } from "reactstrap";
@@ -81,49 +74,7 @@ class Notifications extends React.Component {
 	  sent:false
   }
   
-  //handle inputs
-  handleSubject=(e)=>{
-	  this.setState({
-		  subject:e.target.value
-	  })
-	  
-  }
-	
-  handleEmail=(e)=>{
-	  this.setState({
-		  email:e.target.value
-	  })
-	  
-  }
-
-  handleMessage=(e)=>{
-	  this.setState({
-		  message:e.target.value
-	  })
-	  
-  }  
-  
-  //submit 
-  formSubmit=(e)=>{
-	e.preventDefault();
-	
-	let data = {
-		subject:this.state.subject,
-		email:this.state.email,
-		message:this.state.message
-	}
-	
-	axios.post('/api/forma',data)
-	.then(res=>{
-		this.setState({
-			sent:true,
-		},this.resetForm())
-	}).catch(()=>{
-		console.log('message not sent');
-	})
-		
-  }
-  
+   
   
   //reset form
   resetForm=()=>{
@@ -152,47 +103,29 @@ class Notifications extends React.Component {
               <Card>
                 <CardHeader>
                   <CardTitle tag="h4">Send Notification</CardTitle>
-                </CardHeader>
+				</CardHeader>
 				<CardBody>
-				  <form onSubmit = {this.formSubmit}>
+				  <form className="notifyForm" method="POST" action="/admin/notifications">
 				    <div class="form-group">
-					  <h6>Subject Line</h6>
+					  <h6>Header</h6>
                       <input class="col-lg" 
 					    type="text" 
-						name="subject" 
-						placeholder="Hidden Hill Notification" 
-						value={this.state.subject}
-						onChange={this.handleSubject}
+						name="header" 
+						placeholder="Horse Alert" 
 					  />
 					</div>
 					<div class="form-group">
-                      <h6>Email Recipient</h6>
-                      <select class="col-lg" 
-					    type="text" 
-						name="email" 
-						value={this.state.email}
-						placeholder="choose"
-						onChange={this.handleEmail}
-						required
-					  >
-					    <option>All</option>
-					    <option>Allison Schieber</option>
-      			        <option>Juliana Luczynski</option>
-      			      </select>
-                    </div>
-					<div class="form-group">
     				  <h6>Notification</h6>
-    				  <input class="col-lg" 
-					    type="text" 
+    				  <textarea class="col-lg" 
+					    rows="5"
 						name="message" 
 						placeholder="Alert - horse pacing"
-						value={this.state.message}
-						onChange={this.handleMessage}
 					  />
   				    </div>
 				    <Button
                       block
                       color="primary"
+					  type="submit"
                       onClick={() => this.notify("tc")}
                     >
                     Send Email
