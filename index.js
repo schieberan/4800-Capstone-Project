@@ -24,7 +24,7 @@ app.get('*', (req, res) => {
   res.send('Server is working.');
 });
 
-app.post('/:lang*?/admin/notifications', function(req, res) {
+app.post('/:lang*?/notify', function(req, res) {
   console.log('server contact');   
    
   const output = `
