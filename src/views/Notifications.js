@@ -105,7 +105,7 @@ class Notifications extends React.Component {
                   <CardTitle tag="h4">Send Notification</CardTitle>
 				</CardHeader>
 				<CardBody>
-				  <form className="notifyForm" method="POST" action="/admin/notifications">
+				  <form className="notifyForm" method="POST" action="/notify">
 				    <div class="form-group">
 					  <h6>Header</h6>
                       <input class="col-lg" 
